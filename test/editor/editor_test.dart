@@ -158,19 +158,12 @@ void main() {
         await tester.pump();
 
         final exception = tester.takeException();
-        expect(
-          exception,
-          isNot(
-            isInstanceOf<MissingFlutterQuillLocalizationException>(),
-          ),
-        );
-
         expect(exception, isNull);
       },
     );
 
     testWidgets(
-      'should throw MissingFlutterQuillLocalizationException if the delegate not provided',
+      'falls back to English localization if the delegate is not provided',
       (tester) async {
         await tester.pumpWidget(
           MaterialApp(
@@ -180,21 +173,22 @@ void main() {
           ),
         );
 
+        await tester.pump();
+
         final exception = tester.takeException();
 
-        expect(exception, isNotNull);
-        expect(
-          exception,
-          isA<MissingFlutterQuillLocalizationException>(),
-        );
+        expect(exception, isNull);
+        expect(find.text('Font'), findsOneWidget);
       },
     );
 
     testWidgets(
-      'should not throw MissingFlutterQuillLocalizationException if the delegate is provided',
+      'uses the provided localization delegate when available',
       (tester) async {
         await tester.pumpWidget(
           MaterialApp(
+            locale: const Locale('es'),
+            supportedLocales: FlutterQuillLocalizations.supportedLocales,
             localizationsDelegates:
                 FlutterQuillLocalizations.localizationsDelegates,
             home: Builder(
@@ -203,33 +197,39 @@ void main() {
           ),
         );
 
+        await tester.pump();
+
         final exception = tester.takeException();
 
         expect(exception, isNull);
-        expect(
-          exception,
-          isNot(isA<MissingFlutterQuillLocalizationException>()),
-        );
+        expect(find.text('Fuente'), findsOneWidget);
       },
     );
 
     testWidgets(
-      'should throw MissingFlutterQuillLocalizationException if the delegate is not provided',
+      'fallback localization provides interpolated messages when delegate is missing',
       (tester) async {
+        late String resolvedMessage;
         await tester.pumpWidget(
           MaterialApp(
             home: Builder(
-              builder: (context) => Text(context.loc.font),
+              builder: (context) {
+                resolvedMessage =
+                    context.loc.theImageHasBeenSavedAt('/tmp/image.png');
+                return const SizedBox.shrink();
+              },
             ),
           ),
         );
 
+        await tester.pump();
+
         final exception = tester.takeException();
 
-        expect(exception, isNotNull);
+        expect(exception, isNull);
         expect(
-          exception,
-          isA<MissingFlutterQuillLocalizationException>(),
+          resolvedMessage,
+          'The image has been saved at: /tmp/image.png',
         );
       },
     );
