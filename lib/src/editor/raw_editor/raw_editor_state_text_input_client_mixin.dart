@@ -64,7 +64,6 @@ mixin RawEditorStateTextInputClientMixin on EditorState
 
   /// This setting is only honored on iOS devices.
   @visibleForTesting
-  @internal
   Brightness createKeyboardAppearance() =>
       widget.config.keyboardAppearance ??
       CupertinoTheme.maybeBrightnessOf(context) ??

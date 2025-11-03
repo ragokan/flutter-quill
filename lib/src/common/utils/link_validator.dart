@@ -1,4 +1,3 @@
-@internal
 library;
 
 import 'package:meta/meta.dart';

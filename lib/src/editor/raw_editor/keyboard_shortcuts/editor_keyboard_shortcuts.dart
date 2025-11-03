@@ -16,7 +16,6 @@ import '../config/events/character_shortcuts_events.dart';
 import '../config/events/space_shortcut_events.dart';
 import 'default_single_activator_intents.dart';
 
-@internal
 class EditorKeyboardShortcuts extends StatelessWidget {
   const EditorKeyboardShortcuts({
     required this.actions,

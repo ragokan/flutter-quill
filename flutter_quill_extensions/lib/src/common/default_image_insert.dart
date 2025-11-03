@@ -13,7 +13,6 @@ OnImageInsertCallback _defaultOnImageInsert() {
   };
 }
 
-@internal
 Future<void> handleImageInsert(
   String imageUrl, {
   required QuillController controller,

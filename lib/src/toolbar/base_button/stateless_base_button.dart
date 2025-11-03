@@ -9,7 +9,7 @@ import 'base_button_options_resolver.dart';
 /// The [T] is the options for the button, usually should refresnce itself
 /// it's used in [childBuilder] so the developer can custmize this when using it
 /// The [I] is extra options for the button, usually for it's state
-@internal
+
 abstract class QuillToolbarBaseButtonStateless<T, I> extends StatelessWidget {
   const QuillToolbarBaseButtonStateless({
     required this.controller,

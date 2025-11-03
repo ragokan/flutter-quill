@@ -5,7 +5,6 @@ import 'package:meta/meta.dart';
 ///
 /// Used as quick response for https://github.com/singerdmx/flutter-quill/issues/2284
 @experimental
-@internal
 @Deprecated(
   'Will be removed in future releases, for now included as quick response to https://github.com/singerdmx/flutter-quill/issues/2284',
 )

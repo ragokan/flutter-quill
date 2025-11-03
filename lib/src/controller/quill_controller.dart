@@ -61,9 +61,8 @@ class QuillController extends ChangeNotifier {
   QuillEditorConfig? _editorConfig;
 
   @visibleForTesting
-  @internal
   QuillEditorConfig? get editorConfig => _editorConfig;
-  @internal
+
   set editorConfig(QuillEditorConfig? value) {
     _editorConfig = value;
     _setDocumentSearchProperties();

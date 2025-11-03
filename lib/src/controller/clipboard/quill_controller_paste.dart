@@ -1,4 +1,3 @@
-@internal
 library;
 
 import 'package:flutter/widgets.dart';
@@ -8,7 +7,6 @@ import '../../../flutter_quill.dart';
 import '../../../quill_delta.dart';
 
 extension QuillControllerPaste on QuillController {
-  @internal
   bool pastePlainTextOrDelta(
     String? clipboardText, {
     required String pastePlainText,

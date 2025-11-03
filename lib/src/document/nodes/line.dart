@@ -534,8 +534,8 @@ base class Line extends QuillContainer<Leaf?> {
   String getPlainText(
     int offset,
     int len, {
-    @internal Iterable<EmbedBuilder>? embedBuilders,
-    @internal EmbedBuilder? unknownEmbedBuilder,
+    Iterable<EmbedBuilder>? embedBuilders,
+    EmbedBuilder? unknownEmbedBuilder,
   }) {
     final plainText = StringBuffer();
     _getPlainText(offset, len, plainText,

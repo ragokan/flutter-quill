@@ -15,7 +15,6 @@ import './embed_button_builder.dart';
 ///
 /// * [EmbedButtonBuilder]
 class EmbedButtonContext {
-  @internal
   EmbedButtonContext({
     required this.controller,
     required this.toolbarIconSize,
@@ -30,7 +29,6 @@ class EmbedButtonContext {
   final QuillIconTheme? iconTheme;
   final QuillDialogTheme? dialogTheme;
 
-  @internal
   @experimental
   final QuillToolbarBaseButtonOptions? baseButtonOptions;
 }

@@ -13,7 +13,6 @@ OnVideoInsertCallback _defaultOnVideoInsert() {
   };
 }
 
-@internal
 Future<void> handleVideoInsert(
   String videoUrl, {
   required QuillController controller,

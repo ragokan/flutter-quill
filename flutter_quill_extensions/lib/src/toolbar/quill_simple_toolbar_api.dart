@@ -4,7 +4,7 @@
 /// the `flutter_quill_extensions` will be updated and published at the same time.
 ///
 /// Update both packages and use the same version for compatibility by running `flutter pub upgrade`.
-@internal
+
 library;
 
 import 'package:meta/meta.dart';

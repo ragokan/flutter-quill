@@ -6,7 +6,7 @@ import 'base_button_options_resolver.dart';
 
 /// The [T] is the options for the button
 /// The [E] is the extra options for the button
-@internal
+
 abstract class QuillToolbarBaseButton<
     T extends QuillToolbarBaseButtonOptions<T, E>,
     E extends QuillToolbarBaseButtonExtraOptions> extends StatefulWidget {

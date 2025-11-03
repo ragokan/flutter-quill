@@ -42,7 +42,6 @@ class Document {
   ///
   /// It acts as a cache to avoid repeatedly extracting or generating the plain text.
   @visibleForTesting
-  @internal
   String? cachedPlainText;
 
   /// The root node of the document tree
@@ -262,26 +261,20 @@ class Document {
   QuillSearchConfig? _searchConfig;
 
   @visibleForTesting
-  @internal
   Iterable<EmbedBuilder>? get embedBuilders => _embedBuilders;
 
   @visibleForTesting
-  @internal
   EmbedBuilder? get unknownEmbedBuilder => _unknownEmbedBuilder;
 
   @visibleForTesting
-  @internal
   QuillSearchConfig? get searchConfig => _searchConfig;
 
-  @internal
   set searchConfig(QuillSearchConfig? searchConfig) =>
       _searchConfig = searchConfig;
 
-  @internal
   set embedBuilders(Iterable<EmbedBuilder>? embedBuilders) =>
       _embedBuilders = embedBuilders;
 
-  @internal
   set unknownEmbedBuilder(EmbedBuilder? unknownEmbedBuilder) =>
       _unknownEmbedBuilder = unknownEmbedBuilder;
 
@@ -289,7 +282,7 @@ class Document {
   String getPlainText(
     int index,
     int len, {
-    @internal bool includeEmbeds = false,
+    bool includeEmbeds = false,
   }) {
     final res = queryChild(index);
     return (res.node as Line).getPlainText(
@@ -554,7 +547,6 @@ class Document {
           .join();
 
   @visibleForTesting
-  @internal
   void loadDocument(Delta doc) {
     if (doc.isEmpty) {
       throw ArgumentError.value(

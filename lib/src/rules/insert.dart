@@ -363,7 +363,7 @@ class AutoFormatMultipleLinksRule extends InsertRule {
   // URL generator tool (https://www.randomlists.com/urls) is used.
 
   /// A regular expression to match a single-line URL
-  @internal
+
   static RegExp get singleLineUrlRegExp => RegExp(
         r'^https?:\/\/[\w\-]+(\.[\w\-]+)*(:\d+)?([\/\?#].*)?$',
         caseSensitive: false,
@@ -371,7 +371,7 @@ class AutoFormatMultipleLinksRule extends InsertRule {
 
   /// A regular expression to detect a URL anywhere in the text, even if it's in the middle of other content.
   /// Used to resolve bug https://github.com/singerdmx/flutter-quill/issues/1432
-  @internal
+
   static RegExp get urlInTextRegExp => RegExp(
         r'https?:\/\/[\w\-]+(\.[\w\-]+)*(:\d+)?([\/\?#][^\s]*)?',
         caseSensitive: false,

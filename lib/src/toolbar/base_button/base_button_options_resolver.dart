@@ -4,7 +4,6 @@ import 'package:meta/meta.dart';
 import '../../editor_toolbar_controller_shared/quill_config.dart';
 import '../theme/quill_icon_theme.dart';
 
-@internal
 class QuillToolbarButtonOptionsResolver {
   const QuillToolbarButtonOptionsResolver({
     required this.baseOptions,
