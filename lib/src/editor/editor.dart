@@ -612,7 +612,20 @@ class _QuillEditorSelectionGestureDetectorBuilder
             details.globalPosition, null, SelectionChangedCause.longPress);
         Feedback.forLongPress(_state.context);
       }
+      SchedulerBinding.instance.addPostFrameCallback((_) {
+        _state._requestKeyboard();
+      });
+      SchedulerBinding.instance.scheduleFrame();
     }
+  }
+
+  @override
+  void onDoubleTapDown(TapDownDetails details) {
+    super.onDoubleTapDown(details);
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      _state._requestKeyboard();
+    });
+    SchedulerBinding.instance.scheduleFrame();
   }
 
   @override
