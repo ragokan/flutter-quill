@@ -594,10 +594,12 @@ class _QuillEditorSelectionGestureDetectorBuilder
 
     if (delegate.selectionEnabled) {
       if (Theme.of(_state.context).isCupertino) {
-        renderEditor!.selectPositionAt(
-          from: details.globalPosition,
-          cause: SelectionChangedCause.longPress,
+        renderEditor!.selectWordsInRange(
+          details.globalPosition,
+          null,
+          SelectionChangedCause.longPress,
         );
+        Feedback.forLongPress(_state.context);
       } else {
         renderEditor!.selectWordsInRange(
             details.globalPosition, null, SelectionChangedCause.longPress);
