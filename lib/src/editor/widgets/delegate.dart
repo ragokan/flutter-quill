@@ -224,7 +224,7 @@ class EditorTextSelectionGestureDetectorBuilder {
 
   /// Handler for [EditorTextSelectionGestureDetector.onSingleLongTapStart].
   ///
-  /// By default, it selects text position specified in [details] if selection
+  /// By default, it selects the word at the long press position if selection
   /// is enabled.
   ///
   /// See also:
@@ -234,10 +234,7 @@ class EditorTextSelectionGestureDetectorBuilder {
   @protected
   void onSingleLongTapStart(LongPressStartDetails details) {
     if (delegate.selectionEnabled) {
-      renderEditor!.selectPositionAt(
-        from: details.globalPosition,
-        cause: SelectionChangedCause.longPress,
-      );
+      renderEditor!.selectWord(SelectionChangedCause.longPress);
     }
   }
 

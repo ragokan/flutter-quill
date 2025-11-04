@@ -1006,9 +1006,7 @@ class _EditorTextSelectionGestureDetectorState
         widget.onSingleLongTapEnd != null) {
       gestures[LongPressGestureRecognizer] =
           GestureRecognizerFactoryWithHandlers<LongPressGestureRecognizer>(
-        () => LongPressGestureRecognizer(
-            debugOwner: this,
-            supportedDevices: <PointerDeviceKind>{PointerDeviceKind.touch}),
+        () => LongPressGestureRecognizer(debugOwner: this),
         (instance) {
           instance
             ..onLongPressStart = _handleLongPressStart
