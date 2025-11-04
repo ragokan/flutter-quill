@@ -599,7 +599,8 @@ class _QuillEditorSelectionGestureDetectorBuilder
           cause: SelectionChangedCause.longPress,
         );
       } else {
-        renderEditor!.selectWord(SelectionChangedCause.longPress);
+        renderEditor!.selectWordsInRange(
+            details.globalPosition, null, SelectionChangedCause.longPress);
         Feedback.forLongPress(_state.context);
       }
     }
