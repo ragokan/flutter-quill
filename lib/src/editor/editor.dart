@@ -614,6 +614,7 @@ class _QuillEditorSelectionGestureDetectorBuilder
       }
       SchedulerBinding.instance.addPostFrameCallback((_) {
         _state._requestKeyboard();
+        _shouldSkipTapUp = false;
       });
       SchedulerBinding.instance.scheduleFrame();
     }
@@ -636,6 +637,7 @@ class _QuillEditorSelectionGestureDetectorBuilder
 
   @override
   void onSingleLongTapEnd(LongPressEndDetails details) {
+    _shouldSkipTapUp = false;
     if (_state.config.onSingleLongTapEnd != null) {
       if (renderEditor != null) {
         if (_state.config.onSingleLongTapEnd!(
