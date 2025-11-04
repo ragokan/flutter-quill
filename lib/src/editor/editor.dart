@@ -415,6 +415,7 @@ class _QuillEditorSelectionGestureDetectorBuilder
 
   final QuillEditorState _state;
   final bool _detectWordBoundary;
+  bool _shouldSkipTapUp = false;
 
   @override
   void onForcePressStart(ForcePressDetails details) {
@@ -494,6 +495,11 @@ class _QuillEditorSelectionGestureDetectorBuilder
 
   @override
   void onSingleTapUp(TapUpDetails details) {
+    if (_shouldSkipTapUp) {
+      _shouldSkipTapUp = false;
+      return;
+    }
+
     if (_state.config.onTapUp != null &&
         renderEditor != null &&
         _state.config.onTapUp!(
@@ -593,6 +599,7 @@ class _QuillEditorSelectionGestureDetectorBuilder
     }
 
     if (delegate.selectionEnabled) {
+      _shouldSkipTapUp = true;
       if (Theme.of(_state.context).isCupertino) {
         renderEditor!.selectWordsInRange(
           details.globalPosition,
@@ -606,6 +613,12 @@ class _QuillEditorSelectionGestureDetectorBuilder
         Feedback.forLongPress(_state.context);
       }
     }
+  }
+
+  @override
+  void onSingleTapCancel() {
+    _shouldSkipTapUp = false;
+    super.onSingleTapCancel();
   }
 
   @override
