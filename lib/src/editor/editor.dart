@@ -442,18 +442,11 @@ class _QuillEditorSelectionGestureDetectorBuilder
       return;
     }
 
-    if (Theme.of(_state.context).isCupertino) {
-      renderEditor!.selectPositionAt(
-        from: details.globalPosition,
-        cause: SelectionChangedCause.longPress,
-      );
-    } else {
-      renderEditor!.selectWordsInRange(
-        details.globalPosition - details.offsetFromOrigin,
-        details.globalPosition,
-        SelectionChangedCause.longPress,
-      );
-    }
+    // Use character-level selection for smooth dragging on all platforms
+    renderEditor!.selectPositionAt(
+      from: details.globalPosition,
+      cause: SelectionChangedCause.longPress,
+    );
   }
 
   bool _isPositionSelected(TapUpDetails details) {

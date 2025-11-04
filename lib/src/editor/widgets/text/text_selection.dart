@@ -851,6 +851,8 @@ class _EditorTextSelectionGestureDetectorState
 
   void _handleTapCancel() {
     widget.onSingleTapCancel?.call();
+    // Clear double tap state when tap is cancelled (e.g., by long press)
+    _isDoubleTap = false;
   }
 
   // added secondary tap function for mouse right click to show toolbar
@@ -948,23 +950,17 @@ class _EditorTextSelectionGestureDetectorState
   }
 
   void _handleLongPressStart(LongPressStartDetails details) {
-    if (!_isDoubleTap) {
-      widget.dragOffsetNotifier?.value = details.globalPosition;
-      widget.onSingleLongTapStart?.call(details);
-    }
+    widget.dragOffsetNotifier?.value = details.globalPosition;
+    widget.onSingleLongTapStart?.call(details);
   }
 
   void _handleLongPressMoveUpdate(LongPressMoveUpdateDetails details) {
-    if (!_isDoubleTap) {
-      widget.dragOffsetNotifier?.value = details.globalPosition;
-      widget.onSingleLongTapMoveUpdate?.call(details);
-    }
+    widget.dragOffsetNotifier?.value = details.globalPosition;
+    widget.onSingleLongTapMoveUpdate?.call(details);
   }
 
   void _handleLongPressEnd(LongPressEndDetails details) {
-    if (!_isDoubleTap) {
-      widget.onSingleLongTapEnd?.call(details);
-    }
+    widget.onSingleLongTapEnd?.call(details);
     // after a long press (from double tap or drag) make sure
     // magnifier is removed
     widget.dragOffsetNotifier?.value = null;
